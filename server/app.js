@@ -11,4 +11,11 @@ app.get("/products/:category", (req, res) => {
   })
 })
 
+app.get("/availability/:manufacturer", (req, res) => {
+  const products = productsService.getFormattedAvailability(req.params.manufacturer)
+  products.then((data) => {
+    res.status(200).json(data)
+  })
+})
+
 module.exports = app
