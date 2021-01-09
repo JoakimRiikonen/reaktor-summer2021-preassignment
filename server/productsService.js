@@ -58,7 +58,7 @@ const getFormattedAvailability = async (manufacturer) => {
 }
 
 const getCategoryWithAvailability = async (category) => {
-  console.log('fetching products')
+  console.log(category + ': fetching products')
   const products = await getCategory(category)
   //get an array consisting of all manufacturers
   const manufacturers = products.map((item) => (item.manufacturer))
@@ -69,12 +69,12 @@ const getCategoryWithAvailability = async (category) => {
     availabilityRequests.push(getFormattedAvailability(manufacturer))
   })
 
-  console.log('fetching availability')
+  console.log(category + ': fetching availability')
 
   //run all the requests at the simultaneously in order to save time
   const responses = await Promise.all(availabilityRequests)
 
-  console.log('combining results')
+  console.log(category + ': combining results')
   
   //combine results into one array
   let allResponses = []
