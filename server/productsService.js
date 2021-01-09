@@ -57,4 +57,42 @@ const getFormattedAvailability = async (manufacturer) => {
   return formattedData
 }
 
-module.exports = { getCategory, getFormattedAvailability }
+const getCategoryWithAvailability = async (category) => {
+  console.log('fetching products')
+  const products = await getCategory(category)
+  //get an array consisting of all manufacturers
+  const manufacturers = products.map((item) => (item.manufacturer))
+  const uniqueManufacturers = [...new Set(manufacturers)]
+
+  let availabilityRequests = []
+  uniqueManufacturers.forEach((manufacturer) => {
+    availabilityRequests.push(getFormattedAvailability(manufacturer))
+  })
+
+  console.log('fetching availability')
+
+  //run all the requests at the simultaneously in order to save time
+  const responses = await Promise.all(availabilityRequests)
+
+  console.log('combining results')
+  
+  //combine results into one array
+  let allResponses = []
+  responses.forEach((response) => {
+    allResponses = allResponses.concat(response)
+  })
+
+  //adding the availability to the product object
+  let productsWithAvailability = []
+  products.forEach((product) => {
+    let availability = allResponses.filter(p => p.id.toLowerCase() === product.id.toLowerCase())[0].instockvalue
+    let newProduct = {
+      ...product,
+      instockvalue: availability
+    }
+    productsWithAvailability.push(newProduct)
+  })
+  return productsWithAvailability
+}
+
+module.exports = { getCategoryWithAvailability }

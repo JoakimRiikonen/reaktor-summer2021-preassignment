@@ -5,14 +5,7 @@ app.use(cors())
 const productsService = require('./productsService')
 
 app.get("/products/:category", (req, res) => {
-  const products = productsService.getCategory(req.params.category)
-  products.then((data) => {
-    res.status(200).json(data)
-  })
-})
-
-app.get("/availability/:manufacturer", (req, res) => {
-  const products = productsService.getFormattedAvailability(req.params.manufacturer)
+  const products = productsService.getCategoryWithAvailability(req.params.category)
   products.then((data) => {
     res.status(200).json(data)
   })
