@@ -85,7 +85,7 @@ const getCategoryWithAvailability = async (category) => {
   //adding the availability to the product object
   let productsWithAvailability = []
   products.forEach((product) => {
-    let availability = allResponses.filter(p => p.id.toLowerCase() === product.id.toLowerCase())[0].instockvalue
+    let availability = allResponses.find(p => p.id.toLowerCase() === product.id.toLowerCase()).instockvalue
     let newProduct = {
       ...product,
       instockvalue: availability
