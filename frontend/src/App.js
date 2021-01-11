@@ -4,12 +4,14 @@ import {
   Switch,
   Route
 } from 'react-router-dom'
+import Navbar from './components/Navbar'
 import FrontPage from './components/FrontPage'
 import ProductsPage from './components/ProductsPage'
 
 const App = () => {
   return(
     <Router>
+      <Navbar/>
       <Switch>
         <Route exact path='/' render={() => (
           <FrontPage/>
