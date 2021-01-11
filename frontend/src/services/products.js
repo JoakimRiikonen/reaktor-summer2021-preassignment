@@ -5,4 +5,5 @@ const getProducts = (category) => {
   return req.then(res => res.data)
 }
 
-export default { getProducts }
+const exports = { getProducts }
+export default exports
