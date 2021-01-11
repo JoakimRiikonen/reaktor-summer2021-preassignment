@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import productsService from '../services/products'
 import styled from 'styled-components'
+import Navbar from './Navbar'
 
 const PageContainer = styled.div`
   text-align: center;
@@ -77,6 +78,7 @@ const ProductsPage = ({ category }) => {
   
   return(
     <PageContainer>
+      <Navbar/>
       <ProductTitle>{category.toUpperCase()}</ProductTitle>
       <div>
         {products.map((product, i) => {

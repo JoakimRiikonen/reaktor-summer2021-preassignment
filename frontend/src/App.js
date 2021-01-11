@@ -4,7 +4,6 @@ import {
   Switch,
   Route
 } from 'react-router-dom'
-import Navbar from './components/Navbar'
 import FrontPage from './components/FrontPage'
 import ProductsPage from './components/ProductsPage'
 import styled from 'styled-components'
@@ -17,7 +16,6 @@ const App = () => {
   return(
     <Container>
       <Router>
-        <Navbar/>
         <Switch>
           <Route exact path='/' render={() => (
             <FrontPage/>
