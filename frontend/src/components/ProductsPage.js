@@ -6,12 +6,13 @@ const ProductsPage = ({ category }) => {
   const [products, setProducts] = useState([])
 
   useEffect(() => {
+    setProducts([])
     productsService
       .getProducts(category)
       .then((data) => {
         setProducts(data)
       })
-  }, [])
+  }, [category])
   
   return(
     <div>
