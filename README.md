@@ -17,9 +17,9 @@ My submission for the reaktor summer 2021 pre-assignment for junior developers. 
 + node >= 14.0.5
 
 ### Installing
-#### Backend
+#### Server
 ```
-cd backend/
+cd server/
 npm install
 ```
 
@@ -30,9 +30,9 @@ npm install
 ```
 
 ### Usage
-#### Running the backend
+#### Running the server
 ```
-cd backend/
+cd server/
 npm run start
 ```
 
