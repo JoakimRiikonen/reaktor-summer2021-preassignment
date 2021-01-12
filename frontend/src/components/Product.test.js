@@ -2,7 +2,6 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render } from '@testing-library/react'
 import Product from './Product'
-import testUtils from 'react-dom/test-utils'
 
 describe('<Product/>', () => {
   test('renders content', () => {
