@@ -1,6 +1,6 @@
 # reaktor-summer2021-preassignment
 
-### [Live site](https://www.joakimriikonen.dev/)
+### [Live site](https://shrouded-ravine-22670.herokuapp.com/)
 IMPORTANT NOTE: The first load might be really slow because the heroku dyno is probably asleep. Additionally, during the bootup the server takes a while to fetch the initial data from the "legacy"-api, which means that the frontend can't fetch any data from the server for a minute or so.
 
 ## About
