@@ -49,13 +49,13 @@ app.get("/products/:category", (req, res) => {
   }) */
   switch (req.params.category) {
     case "gloves":
-      res.status(200).json(gloves)
+      (gloves.length > 0) ? res.status(200).json(gloves) : res.status(503).json(gloves)
       break
     case "facemasks":
-      res.status(200).json(facemasks)
+      (facemasks.length > 0) ? res.status(200).json(facemasks) : res.status(503).json(facemasks)
       break
     case "beanies":
-      res.status(200).json(beanies)
+      (beanies.length > 0) ? res.status(200).json(beanies) : res.status(503).json(beanies)
       break
     default:
       res.status(404).send("Not found.")
