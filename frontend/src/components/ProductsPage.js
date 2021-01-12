@@ -19,18 +19,19 @@ const ProductsPage = ({ category }) => {
 
   useEffect(() => {
     setProducts([])
+    setError("")
     productsService
       .getProducts(category)
       .then((data) => {
-        setError("")
         setProducts(data)
       })
       .catch((error) => {
         console.log('aaa')
-        if (error.response) {
-          if(error.response.status === 404){
-            setError("Product data was not found")
-          }
+        if (error.response && error.response.status === 404) {
+          setError("Product data was not found")
+        }
+        else{
+          setError("Error fetching data. Please wait a minute and then refresh.")
         }
       })
   }, [category])
