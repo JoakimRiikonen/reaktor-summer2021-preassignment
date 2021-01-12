@@ -1,5 +1,8 @@
 # reaktor-summer2021-preassignment
 
+### [Live site](https://www.joakimriikonen.dev/)
+IMPORTANT NOTE: The first load might be really slow because the heroku dyno is probably asleep. Additionally, during the bootup the server takes a while to fetch the initial data from the "legacy"-api, which means that the frontend can't fetch any data from the server for a minute or so.
+
 ## About
 My submission for the reaktor summer 2021 pre-assignment for junior developers. The server fetches products from a "legacy"-api and caches and formats the results for faster usage. The frontend fetches the data from the server and lists the products by category.
 
