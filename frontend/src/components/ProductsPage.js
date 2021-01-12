@@ -15,13 +15,23 @@ const ProductTitle = styled.h1`
 const ProductsPage = ({ category }) => {
 
   const [products, setProducts] = useState([])
+  const [error, setError] = useState("")
 
   useEffect(() => {
     setProducts([])
     productsService
       .getProducts(category)
       .then((data) => {
+        setError("")
         setProducts(data)
+      })
+      .catch((error) => {
+        console.log('aaa')
+        if (error.response) {
+          if(error.response.status === 404){
+            setError("Product data was not found")
+          }
+        }
       })
   }, [category])
   
@@ -29,20 +39,28 @@ const ProductsPage = ({ category }) => {
     <PageContainer>
       <Navbar/>
       <ProductTitle>{category.toUpperCase()}</ProductTitle>
-      <div>
-        {products.map((product, i) => {
-          return (
-            <Product
-              key={i}
-              name={product.name}
-              manufacturer={product.manufacturer}
-              color={product.color}
-              price={product.price}
-              instockvalue={product.instockvalue}
-            />
-          )
-        })}
-      </div>
+      {!error && products.length === 0 &&
+        <h2>Loading data</h2>
+      }
+      {error &&
+        <h2>{error}</h2>
+      }
+      {products.length > 0 && 
+        <div>
+          {products.map((product, i) => {
+            return (
+              <Product
+                key={i}
+                name={product.name}
+                manufacturer={product.manufacturer}
+                color={product.color}
+                price={product.price}
+                instockvalue={product.instockvalue}
+              />
+            )
+          })}
+        </div>
+      }
     </PageContainer>
   )
 }
